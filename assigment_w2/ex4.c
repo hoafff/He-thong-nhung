@@ -2,7 +2,7 @@
  * File: itob.c
  * * Mo ta: Chuong trinh chuyen doi so nguyen sang chuoi ky tu
  * dua tren co so (base) bat ky.
- * * Tac gia: Gemini AI
+ * 
  * Ngay: 10/03/2026
  *****************************************************************************/
 

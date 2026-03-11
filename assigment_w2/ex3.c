@@ -2,7 +2,7 @@
  * File: expand.c
  * * Mo ta: Chuong trinh mo rong cac ky hieu viet tat nhu a-z, 0-9
  * tu chuoi nguon sang chuoi dich day du.
- * * Tac gia: Gemini AI
+ * 
  * Ngay: 10/03/2026
  *****************************************************************************/
 

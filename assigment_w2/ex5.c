@@ -2,7 +2,7 @@
  * File: stack_op.c
  * * Mo ta: Cac thao tac bo sung cho Stack trong chuong trinh may tinh.
  * Bao gom: In phan tu dau, Sao chep, Hoan doi va Xoa stack.
- * * Tac gia: Gemini AI
+ * 
  * Ngay: 10/03/2026
  *****************************************************************************/
 
