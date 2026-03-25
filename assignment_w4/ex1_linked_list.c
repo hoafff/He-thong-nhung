@@ -1,6 +1,25 @@
+/******************************************************************************
+ * File: ex1.c
+ * Mo ta: Chuong trinh cai dat danh sach lien ket don voi cac thao tac
+ * them vao cuoi danh sach, tim kiem, xoa node va giai phong bo nho.
+ *
+ * Ngay: 15/03/2026
+ ******************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 
+/******************************************************************************
+ * Function: display
+ * Description:
+ * Ham hien thi toan bo cac phan tu trong danh sach lien ket.
+ *
+ * Parameters:
+ * struct node *head[]: Con tro tro den node dau tien cua danh sach.
+ *
+ * Return:
+ * void.
+ ******************************************************************************/
 struct node
 {
     int data;
@@ -29,6 +48,18 @@ void display(struct node *head)
     printf("\n");
 }
 
+/******************************************************************************
+ * Function: addback
+ * Description:
+ * Ham them mot node moi co gia tri data vao cuoi danh sach lien ket.
+ *
+ * Parameters:
+ * struct node *head[]: Con tro tro den node dau tien cua danh sach.
+ * int data: Gia tri can them vao danh sach.
+ *
+ * Return:
+ * struct node *: Con tro head cua danh sach sau khi them.
+ ******************************************************************************/
 struct node *addback(struct node *head, int data)
 {
     struct node *new_node = (struct node *)malloc(sizeof(struct node));
@@ -56,6 +87,18 @@ struct node *addback(struct node *head, int data)
     return head;
 }
 
+/******************************************************************************
+ * Function: find
+ * Description:
+ * Ham tim node co gia tri data trong danh sach lien ket.
+ *
+ * Parameters:
+ * struct node *head[]: Con tro tro den node dau tien cua danh sach.
+ * int data: Gia tri can tim.
+ *
+ * Return:
+ * struct node *: Con tro den node tim thay, neu khong co thi tra ve NULL.
+ ******************************************************************************/
 struct node *find(struct node *head, int data)
 {
     struct node *current = head;
@@ -72,6 +115,18 @@ struct node *find(struct node *head, int data)
     return NULL;
 }
 
+/******************************************************************************
+ * Function: delnode
+ * Description:
+ * Ham xoa mot node khoi danh sach lien ket.
+ *
+ * Parameters:
+ * struct node *head[]: Con tro tro den node dau tien cua danh sach.
+ * struct node *pelement[]: Con tro den node can xoa.
+ *
+ * Return:
+ * struct node *: Con tro head moi cua danh sach sau khi xoa.
+ ******************************************************************************/
 struct node *delnode(struct node *head, struct node *pelement)
 {
     if (head == NULL || pelement == NULL)
@@ -101,6 +156,17 @@ struct node *delnode(struct node *head, struct node *pelement)
     return head;
 }
 
+/******************************************************************************
+ * Function: freelist
+ * Description:
+ * Ham giai phong toan bo bo nho da cap phat cho danh sach lien ket.
+ *
+ * Parameters:
+ * struct node *head[]: Con tro tro den node dau tien cua danh sach.
+ *
+ * Return:
+ * void.
+ ******************************************************************************/
 void freelist(struct node *head)
 {
     struct node *current = head;
@@ -112,6 +178,18 @@ void freelist(struct node *head)
     }
 }
 
+/******************************************************************************
+ * Function: main
+ * Description:
+ * Ham chinh de kiem tra cac thao tac tren danh sach lien ket don:
+ * them, tim, xoa va giai phong danh sach.
+ *
+ * Parameters:
+ * void.
+ *
+ * Return:
+ * 0: Neu chuong trinh chay thanh cong.
+ ******************************************************************************/
 int main(void)
 {
     struct node *head = NULL;
