@@ -6,6 +6,13 @@
 - The host system will allow you to simulate software on a host platform. 
 - The target system will be used in upcoming assignments as we begin to create our microcontroller applications.
 
+### bản dịch
+- Trong bài tập lập trình này, chúng ta sẽ tạo một hệ thống build sử dụng các công cụ GNU, GCC và GNU Make. 
+- Bài tập này sẽ yêu cầu biên dịch nhiều tệp tin, liên kết chúng với nhau và tạo ra tệp thực thi cuối cùng. 
+- Chúng ta sẽ cần hỗ trợ hai nền tảng; môi trường máy chủ và hệ thống nhúng mục tiêu MSP432. 
+- Hệ thống máy chủ sẽ cho phép bạn mô phỏng phần mềm trên nền tảng máy chủ. 
+- Hệ thống mục tiêu sẽ được sử dụng trong các bài tập sắp tới khi chúng ta bắt đầu tạo ứng dụng cho vi điều khiển của mình.
+
 ### <ins>Output</ins>:  
 
 Note: Click on each image for better visibility.
