@@ -1,0 +1,118 @@
+/*
+ * Ten file: problem_6_2.c
+ * Ngay tao: 31/03/2026
+ * Noi dung: Cai dat Bang bam (Hash table) su dung phuong phap chaining 
+ * (danh sach lien ket) de dem tan suat xuat hien cua cac tu.
+ * Bao gom chuc nang tim kiem, them moi va giai phong bo nho.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define TABLE_SIZE 100 // Kich thuoc cua bang bam
+
+// Cau truc node cua danh sach lien ket (luu the hien cua 1 tu)
+typedef struct Record {
+    char *word;           // Tu can luu
+    int count;            // Tan suat xuat hien
+    struct Record *next;  // Con tro tro den node tiep theo
+} Record;
+
+// Khai bao bang bam la mang cac con tro Record
+Record *hash_table[TABLE_SIZE];
+
+// Ham bam: Bien doi chuoi thanh 1 index (0 den TABLE_SIZE - 1)
+unsigned int hash_function(const char *str) {
+    unsigned int hash = 0;
+    while (*str) {
+        hash = (hash * 31) + *str; // Thuat toan bam don gian
+        str++;
+    }
+    return hash % TABLE_SIZE;
+}
+
+/*
+ * Ham tra cuu:
+ * - str: tu can tim
+ * - create_if_missing: neu = 1 thi tao moi khi khong tim thay
+ */
+Record* lookup(const char *str, int create_if_missing) {
+    // Tinh toan index tu chuoi
+    unsigned int index = hash_function(str);
+    Record *curr = hash_table[index];
+
+    // Duyet danh sach lien ket tai bucket index do
+    while (curr != NULL) {
+        if (strcmp(curr->word, str) == 0) {
+            return curr; // Da thay tu nay
+        }
+        curr = curr->next;
+    }
+
+    // Neu khong tim thay va duoc phep tao moi
+    if (create_if_missing) {
+        // Cap phat bo nho cho node moi (malloc)
+        Record *new_record = (Record *)malloc(sizeof(Record));
+        if (new_record == NULL) return NULL; // Loi cap phat
+
+        // Copy chuoi va set tan suat
+        new_record->word = strdup(str); 
+        new_record->count = 1;
+
+        // Chen node moi vao dau danh sach lien ket
+        new_record->next = hash_table[index];
+        hash_table[index] = new_record;
+
+        return new_record;
+    }
+
+    return NULL; // Khong tim thay va khong tao moi
+}
+
+// Ham xoa bang, giai phong toan bo bo nho (free)
+void cleartable() {
+    // Duyet qua toan bo cac bucket
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        Record *curr = hash_table[i];
+        
+        // Giai phong tung node trong danh sach lien ket
+        while (curr != NULL) {
+            Record *temp = curr;
+            curr = curr->next;
+            
+            free(temp->word); // Giai phong chuoi duoc tao boi strdup
+            free(temp);       // Giai phong node duoc tao boi malloc
+        }
+        
+        // Dat con tro tai bucket tro ve NULL
+        hash_table[i] = NULL; 
+    }
+}
+
+int main() {
+    // Khoi tao bang bam ban dau trong
+    for(int i=0; i < TABLE_SIZE; i++) {
+        hash_table[i] = NULL;
+    }
+
+    // Demo thu nghiem
+    lookup("hello", 1);
+    lookup("world", 1);
+    Record *rec = lookup("hello", 1); // Them tu hello lan nua
+    if (rec != NULL) {
+        rec->count++; // Tang tan suat len 2
+    }
+
+    // Kiem tra thu tim kiem
+    Record *check = lookup("hello", 0);
+    if (check) {
+        printf("Tu '%s' xuat hien %d lan.\n", check->word, check->count);
+    }
+
+    // Giai phong toan bo truoc khi dong chuong trinh
+    cleartable();
+    printf("Da giai phong bo nho bang bam thanh cong.\n");
+
+    return 0;
+}

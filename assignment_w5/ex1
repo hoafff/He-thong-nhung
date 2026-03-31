@@ -1,0 +1,87 @@
+/*
+ * Ten file: problem_6_1.c
+ * Ngay tao: 31/03/2026
+ * Noi dung: Su dung con tro ham (function pointer) ket hop voi qsort de 
+ * sap xep mang cau truc (struct) theo tieu chi khac nhau. 
+ * Cai dat ham filter de loc du lieu theo dieu kien tuoi.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Dinh nghia cau truc ban ghi
+typedef struct {
+    char firstname[50];
+    char lastname[50];
+    int age;
+} Celebrity;
+
+// Callback function de qsort so sanh firstname
+int compare_firstname(const void *pa, const void *pb) {
+    // Ep kieu tu void* sang Celebrity* de truy cap du lieu
+    Celebrity *c1 = (Celebrity *)pa;
+    Celebrity *c2 = (Celebrity *)pb;
+    // Dung strcmp de so sanh chuoi
+    return strcmp(c1->firstname, c2->firstname);
+}
+
+// Callback function de qsort so sanh lastname
+int compare_lastname(const void *pa, const void *pb) {
+    Celebrity *c1 = (Celebrity *)pa;
+    Celebrity *c2 = (Celebrity *)pb;
+    return strcmp(c1->lastname, c2->lastname);
+}
+
+// Callback function in ra neu tuoi lon hon 20
+void isolder(Celebrity *c) {
+    if (c->age > 20) {
+        printf("%s %s, Age: %d\n", c->firstname, c->lastname, c->age);
+    }
+}
+
+// Ham duyet qua mang va ap dung 1 ham callback len tung phan tu
+void apply(Celebrity *arr, int num, void (*func)(Celebrity *)) {
+    // Lap qua tung phan tu
+    for (int i = 0; i < num; i++) {
+        func(&arr[i]); // Goi ham duoc truyen vao
+    }
+}
+
+// Ham in danh sach de kiem tra
+void print_list(Celebrity *arr, int num) {
+    for (int i = 0; i < num; i++) {
+        printf("%s %s, Age: %d\n", arr[i].firstname, arr[i].lastname, arr[i].age);
+    }
+    printf("--------------------\n");
+}
+
+int main() {
+    // Tao mang du lieu gia lap
+    Celebrity celebs[] = {
+        {"Tom", "Cruise", 61},
+        {"Zendaya", "Coleman", 27},
+        {"Millie", "Bobby", 19},
+        {"Keanu", "Reeves", 59}
+    };
+    int num_celebs = sizeof(celebs) / sizeof(celebs[0]);
+
+    printf("Danh sach ban dau:\n");
+    print_list(celebs, num_celebs);
+
+    // Sap xep theo First Name
+    qsort(celebs, num_celebs, sizeof(Celebrity), compare_firstname);
+    printf("Sap xep theo First Name:\n");
+    print_list(celebs, num_celebs);
+
+    // Sap xep theo Last Name
+    qsort(celebs, num_celebs, sizeof(Celebrity), compare_lastname);
+    printf("Sap xep theo Last Name:\n");
+    print_list(celebs, num_celebs);
+
+    // Ap dung ham isolder
+    printf("Nhung nguoi tren 20 tuoi:\n");
+    apply(celebs, num_celebs, isolder);
+
+    return 0;
+}
