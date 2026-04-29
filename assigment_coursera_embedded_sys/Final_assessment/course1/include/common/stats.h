@@ -12,8 +12,8 @@
  * @file stats.h 
  * @brief Header file with declarations and prototypes of stats.c.
  *
- *   The header file that contains all functions prototypes that used 
- *   to calculate the statistics. 
+ * The header file that contains all functions prototypes that used 
+ * to calculate the statistics. 
  *
  * @author Renato Soriano 
  * @date 03/10/2022 
@@ -21,6 +21,9 @@
  */
 #ifndef __STATS_H__
 #define __STATS_H__
+
+#include <stdio.h>
+#include "platform.h"
 
 /**
  * @brief Prints the statistics of a set of data.

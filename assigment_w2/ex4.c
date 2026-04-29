@@ -50,3 +50,5 @@ int main() {
     printf("So 255 co so 16 la: %s\n", s);
     return 0;
 }
+
+// dấu trừ ở tầm 45 nên nhỏ hơn các số ở khoảng 48 đến 57 (0-9) và 65 đến 90 (A-Z) trong bảng mã ASCII, nên nó sẽ được đặt ở vị trí đầu tiên của chuỗi kết quả nếu số nguyên ban đầu là âm.

@@ -143,3 +143,77 @@ int main() {
 
     return 0;
 }
+
+/*
+int main() {
+    int choice;
+    char name[50];
+    char phone[20];
+
+    // Khoi tao bang bam rong
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        buckets[i] = NULL;
+    }
+
+    do {
+        printf("\n===== MENU QUAN LY DANH BA =====\n");
+        printf("1. Them lien he\n");
+        printf("2. Tim kiem lien he\n");
+        printf("3. Xoa lien he\n");
+        printf("4. Hien thi danh ba\n");
+        printf("0. Thoat\n");
+        printf("Nhap lua chon: ");
+        scanf("%d", &choice);
+        getchar(); // xoa ky tu '\n' con lai trong bo dem
+
+        switch (choice) {
+            case 1:
+                printf("Nhap ten: ");
+                fgets(name, sizeof(name), stdin);
+                removeNewline(name);
+
+                printf("Nhap so dien thoai: ");
+                fgets(phone, sizeof(phone), stdin);
+                removeNewline(phone);
+
+                insert(name, phone);
+                break;
+
+            case 2:
+                printf("Nhap ten can tim: ");
+                fgets(name, sizeof(name), stdin);
+                removeNewline(name);
+
+                char* result = search(name);
+                if (result != NULL) {
+                    printf("Tim thay %s: %s\n", name, result);
+                } else {
+                    printf("Khong tim thay lien he '%s'\n", name);
+                }
+                break;
+
+            case 3:
+                printf("Nhap ten can xoa: ");
+                fgets(name, sizeof(name), stdin);
+                removeNewline(name);
+
+                deleteNode(name);
+                break;
+
+            case 4:
+                display();
+                break;
+
+            case 0:
+                printf("Dang thoat chuong trinh...\n");
+                break;
+
+            default:
+                printf("Lua chon khong hop le. Vui long nhap lai!\n");
+        }
+
+    } while (choice != 0);
+
+    freeTable();
+    return 0;
+}*/

@@ -21,7 +21,7 @@
  * FILE *f1: Con tro file thu nhat.
  * FILE *f2: Con tro file thu hai.
  * Return:
- * None
+ * None 
  ******************************************************************************/
 void compare_files(FILE *f1, FILE *f2) {
     char line1[MAXLINE], line2[MAXLINE];

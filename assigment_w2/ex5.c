@@ -35,6 +35,7 @@ void push(double f) {
  * Lay va tra ve gia tri tren cung cua stack.
  * Parameters:
  * None
+ * con tro se tro den o rong hien tai
  * Return:
  * double: Gia tri lay ra tu stack.
  *****************************************************************************/

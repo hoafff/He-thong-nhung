@@ -39,7 +39,7 @@ void isolder(Celebrity *c) {
         printf("%s %s, Age: %d\n", c->firstname, c->lastname, c->age);
     }
 }
-
+x
 // Ham duyet qua mang va ap dung 1 ham callback len tung phan tu
 void apply(Celebrity *arr, int num, void (*func)(Celebrity *)) {
     // Lap qua tung phan tu

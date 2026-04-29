@@ -50,3 +50,5 @@ int main(int argc, char *argv[]) {
     
     return 0; // Ket thuc chuong trinh thanh cong
 }
+
+// vd ./calc 3 4 + 2 * 7 - se tinh (3 + 4) * 2 - 7 va in ra ket qua la 7.00

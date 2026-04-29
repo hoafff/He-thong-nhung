@@ -27,10 +27,10 @@
  *
  */
 
-#include <stdio.h>
-#include "stats.h"
+#include "../include/common/stats.h"
 
-/* Size of the Data Set */
+/*
+// Size of the Data Set 
 #define SIZE (40)
 
 int main() {
@@ -41,13 +41,13 @@ int main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  /* Other Variable Declarations */
+  // Other Variable Declarations 
   unsigned char minimum = 0;
   unsigned char maximum = 0;
   unsigned char mean = 0;
   unsigned char median = 0;
 
-  /* Statistics and Printing Functions */
+  // Statistics and Printing Functions 
 
   printf("\nArray before sorting: \n");
   print_array(test, SIZE);
@@ -68,50 +68,55 @@ int main() {
   return 0;
 
 }
+*/
 
 /* Implementation and Functions Definitions */
 
 void print_statistics(unsigned char minimum, unsigned char maximum, unsigned char mean, unsigned char median){
   
-  printf("\nThe minimum is: %d \n", minimum);
-  printf("\nThe maximum is: %d \n", maximum);
-  printf("\nThe mean is: %d \n", mean);
-  printf("\nThe median is: %d \n", median);
+  PRINTF("\nThe minimum is: %d \n", minimum);
+  PRINTF("\nThe maximum is: %d \n", maximum);
+  PRINTF("\nThe mean is: %d \n", mean);
+  PRINTF("\nThe median is: %d \n", median);
 
 }
 
 void print_array(unsigned char * array, unsigned int count){
-  
+
+  /* The array will print only if the user defines "VERBOSE" in the command line */
+  #ifdef VERBOSE
+
   if(array == NULL){
-    printf("Please Enter a valid input\n");
+    PRINTF("Please Enter a valid input\n");
     return;
   }
 
   if(count <= 0){
-    printf("The array is empty...\n");
+    PRINTF("The array is empty...\n");
     return;
   }
 
   for(unsigned int i = 0; i < count; i++){
     if(i % 8 == 0){
-      printf("\n");
+      PRINTF("\n");
     }
-    printf("%d \t", array[i]);
+    PRINTF("%d \t", array[i]);
   }
 
-  printf("\n");
+  PRINTF("\n");
 
+  #endif
 }
 
 unsigned char find_median(unsigned char * array, unsigned int count){
   
   if(array == NULL){
-    printf("Please Enter a valid input\n");
+    PRINTF("Please Enter a valid input\n");
     return -1;
   }
 
   if(count <= 0){
-    printf("The array is empty...\n");
+    PRINTF("The array is empty...\n");
     return -1;
   }
 
@@ -129,7 +134,7 @@ unsigned char find_mean(unsigned char * array, unsigned int count){
   unsigned int sum = 0;
 
   if(array == NULL){
-    printf("Please Enter a valid input\n");
+    PRINTF("Please Enter a valid input\n");
     return -1;
   }
 
@@ -150,12 +155,12 @@ unsigned char find_maximum(unsigned char * array, unsigned int count){
   unsigned int max;
 
   if(array == NULL){
-    printf("Please Enter a valid input\n");
+    PRINTF("Please Enter a valid input\n");
     return -1;
   }
 
   if(count <= 0){
-    printf("The array is empty...\n");
+    PRINTF("The array is empty...\n");
     return -1;
   }
 
@@ -176,12 +181,12 @@ unsigned char find_minimum(unsigned char * array, unsigned int count){
   unsigned int min;
 
   if(array == NULL){
-    printf("Please Enter a valid input\n");
+    PRINTF("Please Enter a valid input\n");
     return -1;
   }
 
   if(count <= 0){
-    printf("The array is empty...\n");
+    PRINTF("The array is empty...\n");
     return -1;
   }
 
@@ -202,12 +207,12 @@ void sort_array(unsigned char * array, unsigned int count){
   unsigned int temp;
 
   if(array == NULL){
-    printf("Please Enter a valid input\n");
+    PRINTF("Please Enter a valid input\n");
     return;
   }
 
   if(count <= 0){
-    printf("The array is empty...\n");
+    PRINTF("The array is empty...\n");
     return;
   }
 
